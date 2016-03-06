@@ -1,4 +1,8 @@
-class Block:
+# -*- coding: utf-8 -*-
+from __future__ import unicode_literals
+
+
+class Block(object):
     """Minecraft PI block description. Can be sent to Minecraft.setBlock/s"""
     def __init__(self, id, data=0):
         self.id = id
@@ -10,15 +14,13 @@ class Block:
     def __hash__(self):
         return (self.id << 8) + self.data
 
-    def withData(self, data):
-        return Block(self.id, data)
-
     def __iter__(self):
         """Allows a Block to be sent whenever id [and data] is needed"""
         return iter((self.id, self.data))
-        
+
     def __repr__(self):
-        return "Block(%d, %d)"%(self.id, self.data)
+        return "Block(%d, %d)" % (self.id, self.data)
+
 
 AIR                 = Block(0)
 STONE               = Block(1)
